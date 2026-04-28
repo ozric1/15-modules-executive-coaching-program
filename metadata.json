@@ -1,0 +1,7 @@
+{
+  "name": "Zentia World Program",
+  "description": "A high-end executive business English course with 15 modules covering foundations, strategy, operations, and management.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
