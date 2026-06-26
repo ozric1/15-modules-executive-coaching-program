@@ -154,7 +154,12 @@ const ProgressCheck: React.FC<ProgressCheckProps> = ({ title, questions, lessonI
                     </div>
                     <p className="text-xl font-serif text-slate-800 mb-6">{getScoreMessage()}</p>
                     <button 
-                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                        onClick={() => {
+                            const container = document.getElementById('lesson-scroll-container');
+                            if (container) {
+                                container.scrollTo({ top: 0, behavior: 'smooth' });
+                            }
+                        }}
                         className="text-blue-600 font-bold hover:underline"
                     >
                         Review Answers

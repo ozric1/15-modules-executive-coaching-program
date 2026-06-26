@@ -5,8 +5,6 @@ import ChatWidget from './components/ChatWidget';
 import { COURSE_DATA } from './constants';
 
 const App: React.FC = () => {
-    const scrollContainerRef = useRef<HTMLDivElement>(null);
-
     // 1. Initialize State from LocalStorage for persistence
     const [currentLessonId, setCurrentLessonId] = useState<number>(() => {
         const saved = localStorage.getItem('zentia_last_lesson');
@@ -19,6 +17,7 @@ const App: React.FC = () => {
     });
 
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
     
     // 2. Persist state changes
     useEffect(() => {
@@ -29,9 +28,10 @@ const App: React.FC = () => {
         localStorage.setItem('zentia_completed', JSON.stringify(completedLessons));
     }, [completedLessons]);
 
+    // Scroll to top on lesson change
     useEffect(() => {
         if (scrollContainerRef.current) {
-            scrollContainerRef.current.scrollTop = 0;
+            scrollContainerRef.current.scrollTo({ top: 0, behavior: 'smooth' });
         }
     }, [currentLessonId]);
 
@@ -63,6 +63,9 @@ const App: React.FC = () => {
         if (currentIndex !== -1 && currentIndex < sequence.length - 1) {
             const nextId = sequence[currentIndex + 1];
             setCurrentLessonId(nextId);
+            if (scrollContainerRef.current) {
+                scrollContainerRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+            }
         } else {
             // Course finished
             alert("Congratulations! You have completed the entire Zentia World Executive Program.");
@@ -157,7 +160,11 @@ const App: React.FC = () => {
                 </header>
 
                 {/* Scrollable Content */}
-                <div ref={scrollContainerRef} className="flex-1 overflow-y-auto custom-scrollbar px-4 md:px-12 scroll-smooth pb-20">
+                <div 
+                    ref={scrollContainerRef}
+                    id="lesson-scroll-container"
+                    className="flex-1 overflow-y-auto custom-scrollbar px-4 md:px-12 scroll-smooth pb-20"
+                >
                     <LessonView 
                         data={lessonData} 
                         lessonId={currentLessonId} 
