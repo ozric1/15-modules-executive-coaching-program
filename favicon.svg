@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+    <defs>
+        <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#1e293b" />
+            <stop offset="100%" stop-color="#0f172a" />
+        </linearGradient>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&amp;display=swap');
+            .logo-text {
+                font-family: 'Playfair Display', serif;
+                font-weight: 700;
+                font-style: italic;
+                fill: #ffffff;
+                font-size: 38px;
+                text-anchor: middle;
+                dominant-baseline: central;
+            }
+        </style>
+    </defs>
+    
+    <!-- Background squircle -->
+    <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#bg-gradient)" stroke="#2b3b54" stroke-width="2"/>
+    
+    <!-- Inner border for depth -->
+    <rect x="5" y="5" width="54" height="54" rx="15" fill="none" stroke="#101726" stroke-width="1"/>
+    
+    <!-- Letter Z -->
+    <text x="31" y="29" class="logo-text">Z</text>
+    
+    <!-- Horizontal crossbar -->
+    <line x1="22" y1="31.5" x2="40" y2="31.5" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+</svg>
